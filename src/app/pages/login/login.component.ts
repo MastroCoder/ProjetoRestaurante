@@ -14,6 +14,7 @@ import { Validators } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email],),
     password: new FormControl('', [Validators.min(6), Validators.max(15)])
@@ -22,5 +23,11 @@ export class LoginComponent {
   onSubmit(){
     console.warn(this.loginForm.value.email);
     console.warn(this.loginForm.value.password);
+  }
+  get email() {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
   }
 }
